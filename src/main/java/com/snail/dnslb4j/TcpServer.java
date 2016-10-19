@@ -16,6 +16,11 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 public final class TcpServer {
 
 	public static void main(String[] args) throws Exception {
+		if (args.length == 1) {
+			Cfg.setPrePath(args[0]);
+		} else {
+			Cfg.setPrePath("development");
+		}
 		io.netty.util.internal.logging.InternalLoggerFactory.setDefaultFactory(new io.netty.util.internal.logging.JdkLoggerFactory());
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
